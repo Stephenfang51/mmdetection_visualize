@@ -2,6 +2,7 @@ import json
 import matplotlib.pyplot as plt
 import sys
 import os
+from collections import OrderedDict
 
 class visualize_mmdetection():
     def __init__(self, path):
@@ -35,26 +36,31 @@ class visualize_mmdetection():
                 self.loss_cls.append(loss_cls_value)
                 self.loss.append(loss_value)
                 self.acc.append(acc_value)
-
-            #         return loss_rpn_bbox, loss_rpn_cls, loss_bbox, loss_cls,  loss, acc
+                # -------------clear repeated value---------------------#
+        self.loss_rpn_cls = list(OrderedDict.fromkeys(self.loss_rpn_cls))
+        self.loss_rpn_bbox = list(OrderedDict.fromkeys(self.loss_rpn_bbox))
+        self.loss_bbox = list(OrderedDict.fromkeys(self.loss_bbox))
+        self.loss_cls = list(OrderedDict.fromkeys(self.loss_cls))
+        self.loss = list(OrderedDict.fromkeys(self.loss))
+        self.acc = list(OrderedDict.fromkeys(self.acc))
 
     def show_chart(self):
         plt.rcParams.update({'font.size': 15})
 
         plt.figure(figsize=(20, 20))
 
-        plt.subplot(321, xlabel='loss_rpn_cls')
+        plt.subplot(321, title='loss_rpn_cls', ylabel='loss')
         plt.plot(self.loss_rpn_cls)
-        plt.subplot(322, xlabel='loss_rpn_bbox')
+        plt.subplot(322, title='loss_rpn_bbox', ylabel='loss')
         plt.plot(self.loss_rpn_bbox)
 
-        plt.subplot(323, xlabel='loss_cls')
+        plt.subplot(323, title='loss_cls', ylabel='loss')
         plt.plot(self.loss_cls)
-        plt.subplot(324, xlabel='loss_bbox')
+        plt.subplot(324, title='loss_bbox', ylabel='loss')
         plt.plot(self.loss_bbox)
-        plt.subplot(325, xlabel='loss', )
+        plt.subplot(325, title='total loss', ylabel='loss')
         plt.plot(self.loss)
-        plt.subplot(326, xlabel='acc')
+        plt.subplot(326, title='accuracy', ylabel='accuracy')
         plt.plot(self.acc)
         plt.suptitle((sys.argv[1][5:] + "\n training result"), fontsize=30)
         plt.savefig(('output/' + sys.argv[1][5:] + '_result.png'))
