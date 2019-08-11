@@ -17,13 +17,13 @@ The program supports drawing six curves including the following
 1. Clone it  
 `git clone https://github.com/Stephenfang51/mmdetection_visualize`
 
-  there will be totall three files(json directory, output directory, visualize.py)
+  There will be total 3 files(json directory, output directory, visualize.py)
 
 ### How to use
 
-1. After training finished, you will **have work_dir directory** in your mmdetection directory
+1. After training finished, you will have **work_dir** directory in your mmdetection directory
 2. take the latest json file and put into json directory in mmditection_visualize directory
-3. command `python visualize.py json/your json file.json` in terminal
+3. command `python visualize.py json/xxxxxxxlog.json` in terminal
 4. check the output directory, Done !
 
 
