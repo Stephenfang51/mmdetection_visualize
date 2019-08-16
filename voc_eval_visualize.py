@@ -4,7 +4,7 @@ import mmcv
 import numpy as np
 
 from mmdet import datasets
-from mmdet.core.evaluation.mean_ap_test import map_roc_pr
+from mmdet.core.evaluation.mean_ap_visualize import map_roc_pr
 
 
 def voc_eval(result_file, dataset, iou_thr=0.5):
