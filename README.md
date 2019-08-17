@@ -2,7 +2,7 @@
 
 It's a very simple version for visualizing the training result produced by mmdetection
 
-### Updata
+### Update
 > 2019.8.16 ----- PR_curve,  F_measure for VOC dataset
 
 ### Readme
